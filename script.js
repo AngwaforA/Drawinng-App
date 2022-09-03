@@ -1,11 +1,11 @@
-const increaseBtn = document.getElementById("increase");
-const decreaseBtn = document.getElementById("decrease");
-const sizeEl = document.getElementById("size");
-const colorEl = document.getElementById("color");
-const clearEl = document.getElementById("clear");
+const increaseBtn = document.getElementById('increase');
+const decreaseBtn = document.getElementById('decrease');
+const sizeEl = document.getElementById('size');
+const colorEl = document.getElementById('color');
+const clearEl = document.getElementById('clear');
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
 let size = 10;
 let color = colorEl.value;
@@ -16,7 +16,7 @@ let y;
 function drawCircle(x, y){
     ctx.beginPath();
     ctx.arc();
-    ctx.arc(X, y, size, 0, Math.PI * 2);
+    ctx.arc(x, y, size, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
 }
@@ -24,7 +24,7 @@ function drawCircle(x, y){
 function drawLine(x1, y1, x2, y2){
     ctx.beginPath();
     ctx.moveTo(x1, y1);
-    ctx.lineTo(X2, y2);
+    ctx.lineTo(x2, y2);
     ctx.strokeStyle = color;
     ctx.lineWidth = size*2;
     ctx.stroke();
@@ -61,7 +61,7 @@ canvas.addEventListener('mouseup', (e) =>{
 function updateSizeOnScreen(){
     sizeEl.innerText = size;
 }
-increaseBtn.addEventListener('click', (e) =>{
+increaseBtn.addEventListener('click', () =>{
     size = size + 2;
     if(size > 50){
         size = 50;
@@ -77,7 +77,7 @@ decreaseBtn.addEventListener('click', (e) =>{
     updateSizeOnScreen();
 })
 
-clearEl.addEventListener('click', (e) =>{
+clearEl.addEventListener('click', () =>{
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
 
