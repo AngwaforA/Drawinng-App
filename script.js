@@ -1,4 +1,5 @@
 const increaseBtn = document.getElementById("increase");
+const decreaseBtn = document.getElementById("decrease");
 const sizeEl = document.getElementById("size");
 const colorEl = document.getElementById("color");
 const clearEl = document.getElementById("clear");
@@ -6,8 +7,11 @@ const clearEl = document.getElementById("clear");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-let size = 200;
-let color = colorEl.ariaValueMax;
+let size = 10;
+let color = colorEl.value;
+let isPressed = false;
+let x;
+let y;
 
 function drawCircle(x, y){
     ctx.beginPath();
@@ -52,6 +56,29 @@ canvas.addEventListener('mouseup', (e) =>{
     isPressed = false;
     x = undefined;
     y = undefined;
+})
+
+function updateSizeOnScreen(){
+    sizeEl.innerText = size;
+}
+increaseBtn.addEventListener('click', (e) =>{
+    size = size + 2;
+    if(size > 50){
+        size = 50;
+    }
+    updateSizeOnScreen();
+})
+
+decreaseBtn.addEventListener('click', (e) =>{
+    size = size - 2;
+    if(size < 4){
+        size = 4;
+    }
+    updateSizeOnScreen();
+})
+
+clearEl.addEventListener('click', (e) =>{
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
 
 //Draw circle(100, 200)
